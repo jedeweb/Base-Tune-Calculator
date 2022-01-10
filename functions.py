@@ -1,8 +1,8 @@
 import variables
 import constants
 import sys
-# import only system from os for screen clear
-#from os import system, name
+#import only system from os for screen clear
+from os import system, name
 
 #lb to kg
 def lb_to_kg(unit):
@@ -49,6 +49,7 @@ def checkfloat(x):
     except:
         return False
     
+#TuneSpring, TuneFront, and TuneRear are all used in the TuneCar function. 
 #Set Spring rates, Weight needs to be in kfg, Distribution is for weight distribution,Spring is Spring type. Output will be kgf
 def TuneSpring(Weight,Distribution,Spring):
     result = Weight * Distribution * variables.SpringFactor[Spring]
@@ -116,15 +117,16 @@ def TuneCar(WeightKg, SpringType, FrontDist, CarClass, DriveType):
     except:
         sys.exit('Error occured on Tune function')
         
+#Quick script to get needed input and error check before putting through to TuneCar. 
 def GetTuneInputs():
     #screen_clear()
-    WeightLb = input('Car Weight in Lbs: ')
+    Weight = input('Car Weight in '+ variables.WeightUnit +': ')
     while True:
-        if checkfloat(WeightLb):
-            WeightLb = float(WeightLb)
+        if checkfloat(Weight):
+            Weight = float(Weight)
             break
         else:
-            WeightLb = input('Please input a valid Car Weight in Lbs: ')
+            Weight = input('Please input a valid Car Weight in '+ variables.WeightUnit + ': ')
     #screen_clear()
     FrontDist = input('Front Weight Percentage: ')
     while True:
@@ -160,12 +162,15 @@ def GetTuneInputs():
         else:
             print ('Please input a valid drive type - RWD, FWD, AWD: ')
     #Tune car
-    TuneCar(lb_to_kg(WeightLb), SpringType, FrontDist, CarClass, DriveType)
+    if variables.WeightUnit == 'Lbs':
+        TuneCar(lb_to_kg(Weight), SpringType, FrontDist, CarClass, DriveType)
+    else:
+        TuneCar(Weight, SpringType, FrontDist, CarClass, DriveType)
 
 
 
 
-"""# define our clear function
+# cleaar screen 
 def screen_clear():
     # for windows
     if name == 'nt':
@@ -173,5 +178,4 @@ def screen_clear():
     # for mac and linux
     else:
         _ = system('clear')
-*/ 
-"""
+
