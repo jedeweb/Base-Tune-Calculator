@@ -2,7 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import functions
 import variables
 
-#Pass input through functions.TuneCar and output to lines on right
+# Pass input through functions.TuneCar and output to lines on right
+
 
 def guiTuneCar():
     # check input for lb or kg and set value for weight in kg
@@ -15,19 +16,26 @@ def guiTuneCar():
     FrontDist = ui.spnDistribution.value()
     CarClass = ui.listCarClass.currentText()
     DriveType = ui.listDrivetype.currentText()
-    #run the TuneCar function, output saved to variables.Tune[] dictionary
-    functions.TuneCar(WeightKg, SpringType.upper(), float(FrontDist), CarClass.upper(), DriveType.upper())
-    #set line values on right form to calculated output
-    ui.lineFrontSpring.setText(str(round(variables.Tune['SpringFrontLb'], 1)))
-    ui.lineRearSpring.setText(str(round(variables.Tune['SpringRearLb'], 1)))
-    ui.lineFrontArb.setText(str(round(variables.Tune['ArbFront'], 1)))
-    ui.lineRearArb.setText(str(round(variables.Tune['ArbRear'], 1)))
-    ui.lineFrontRebound.setText(str(round(variables.Tune['ReboundFront'], 1)))
-    ui.lineRearRebound.setText(str(round(variables.Tune['ReboundRear'], 1)))
-    ui.lineFrontBump.setText(str(round(variables.Tune['BumpFront'], 1)))
-    ui.lineRearBump.setText(str(round(variables.Tune['BumpRear'], 1)))
+    # run the TuneCar function, output saved to variables.Tune[] dictionary
+    functions.TuneCar(
+        WeightKg,
+        SpringType.upper(),
+        float(FrontDist),
+        CarClass.upper(),
+        DriveType.upper(),
+    )
+    # set line values on right form to calculated output
+    ui.lineFrontSpring.setText(str(round(variables.Tune["SpringFrontLb"], 1)))
+    ui.lineRearSpring.setText(str(round(variables.Tune["SpringRearLb"], 1)))
+    ui.lineFrontArb.setText(str(round(variables.Tune["ArbFront"], 1)))
+    ui.lineRearArb.setText(str(round(variables.Tune["ArbRear"], 1)))
+    ui.lineFrontRebound.setText(str(round(variables.Tune["ReboundFront"], 1)))
+    ui.lineRearRebound.setText(str(round(variables.Tune["ReboundRear"], 1)))
+    ui.lineFrontBump.setText(str(round(variables.Tune["BumpFront"], 1)))
+    ui.lineRearBump.setText(str(round(variables.Tune["BumpRear"], 1)))
 
-#All this window fun was generated from QT Designer
+
+# All this window fun was generated from QT Designer
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -76,14 +84,18 @@ class Ui_MainWindow(object):
         self.layoutLeft.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.listCarClass)
         self.lblSpringType = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblSpringType.setObjectName("lblSpringType")
-        self.layoutLeft.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lblSpringType)
+        self.layoutLeft.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.lblSpringType
+        )
         self.listSpringType = QtWidgets.QComboBox(self.formLayoutWidget)
         self.listSpringType.setObjectName("listSpringType")
         self.listSpringType.addItem("")
         self.listSpringType.addItem("")
         self.listSpringType.addItem("")
         self.listSpringType.addItem("")
-        self.layoutLeft.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.listSpringType)
+        self.layoutLeft.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.listSpringType
+        )
         self.lblDriveType = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblDriveType.setObjectName("lblDriveType")
         self.layoutLeft.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.lblDriveType)
@@ -95,10 +107,14 @@ class Ui_MainWindow(object):
         self.listDrivetype.setItemText(1, "FWD")
         self.listDrivetype.addItem("")
         self.listDrivetype.setItemText(2, "AWD")
-        self.layoutLeft.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.listDrivetype)
+        self.layoutLeft.setWidget(
+            2, QtWidgets.QFormLayout.FieldRole, self.listDrivetype
+        )
         self.lblWeightUnit = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblWeightUnit.setObjectName("lblWeightUnit")
-        self.layoutLeft.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.lblWeightUnit)
+        self.layoutLeft.setWidget(
+            3, QtWidgets.QFormLayout.LabelRole, self.lblWeightUnit
+        )
         self.layoutWeightButtons = QtWidgets.QHBoxLayout()
         self.layoutWeightButtons.setObjectName("layoutWeightButtons")
         self.radbtnLb = QtWidgets.QRadioButton(self.formLayoutWidget)
@@ -108,7 +124,9 @@ class Ui_MainWindow(object):
         self.radbtnKg = QtWidgets.QRadioButton(self.formLayoutWidget)
         self.radbtnKg.setObjectName("radbtnKg")
         self.layoutWeightButtons.addWidget(self.radbtnKg)
-        self.layoutLeft.setLayout(3, QtWidgets.QFormLayout.FieldRole, self.layoutWeightButtons)
+        self.layoutLeft.setLayout(
+            3, QtWidgets.QFormLayout.FieldRole, self.layoutWeightButtons
+        )
         self.lblWeight = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblWeight.setObjectName("lblWeight")
         self.layoutLeft.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.lblWeight)
@@ -119,19 +137,27 @@ class Ui_MainWindow(object):
         self.layoutLeft.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineWeight)
         self.lblDistribution = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblDistribution.setObjectName("lblDistribution")
-        self.layoutLeft.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.lblDistribution)
+        self.layoutLeft.setWidget(
+            5, QtWidgets.QFormLayout.LabelRole, self.lblDistribution
+        )
         self.spnDistribution = QtWidgets.QSpinBox(self.formLayoutWidget)
         self.spnDistribution.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
         self.spnDistribution.setMinimum(1)
         self.spnDistribution.setProperty("value", 50)
         self.spnDistribution.setObjectName("spnDistribution")
-        self.layoutLeft.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.spnDistribution)
+        self.layoutLeft.setWidget(
+            5, QtWidgets.QFormLayout.FieldRole, self.spnDistribution
+        )
         self.lblSpringTightness = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblSpringTightness.setObjectName("lblSpringTightness")
-        self.layoutLeft.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.lblSpringTightness)
+        self.layoutLeft.setWidget(
+            6, QtWidgets.QFormLayout.LabelRole, self.lblSpringTightness
+        )
         self.lblArbTightnes = QtWidgets.QLabel(self.formLayoutWidget)
         self.lblArbTightnes.setObjectName("lblArbTightnes")
-        self.layoutLeft.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.lblArbTightnes)
+        self.layoutLeft.setWidget(
+            7, QtWidgets.QFormLayout.LabelRole, self.lblArbTightnes
+        )
         self.sldrSpring = QtWidgets.QSlider(self.formLayoutWidget)
         self.sldrSpring.setMinimum(1)
         self.sldrSpring.setProperty("value", 50)
@@ -157,10 +183,14 @@ class Ui_MainWindow(object):
         self.layoutRight.setObjectName("layoutRight")
         self.lblSpringFront = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblSpringFront.setObjectName("lblSpringFront")
-        self.layoutRight.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lblSpringFront)
+        self.layoutRight.setWidget(
+            0, QtWidgets.QFormLayout.LabelRole, self.lblSpringFront
+        )
         self.lblSpringRear = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblSpringRear.setObjectName("lblSpringRear")
-        self.layoutRight.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lblSpringRear)
+        self.layoutRight.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.lblSpringRear
+        )
         self.lblFrontArb = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblFrontArb.setObjectName("lblFrontArb")
         self.layoutRight.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.lblFrontArb)
@@ -169,13 +199,19 @@ class Ui_MainWindow(object):
         self.layoutRight.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.lblRearArb)
         self.lblFrontRebound = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblFrontRebound.setObjectName("lblFrontRebound")
-        self.layoutRight.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.lblFrontRebound)
+        self.layoutRight.setWidget(
+            4, QtWidgets.QFormLayout.LabelRole, self.lblFrontRebound
+        )
         self.lblRearRebound = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblRearRebound.setObjectName("lblRearRebound")
-        self.layoutRight.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.lblRearRebound)
+        self.layoutRight.setWidget(
+            5, QtWidgets.QFormLayout.LabelRole, self.lblRearRebound
+        )
         self.lblFrontBump = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblFrontBump.setObjectName("lblFrontBump")
-        self.layoutRight.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.lblFrontBump)
+        self.layoutRight.setWidget(
+            6, QtWidgets.QFormLayout.LabelRole, self.lblFrontBump
+        )
         self.lblRearBump = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.lblRearBump.setObjectName("lblRearBump")
         self.layoutRight.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.lblRearBump)
@@ -183,17 +219,23 @@ class Ui_MainWindow(object):
         self.lineFrontSpring.setEnabled(True)
         self.lineFrontSpring.setReadOnly(True)
         self.lineFrontSpring.setObjectName("lineFrontSpring")
-        self.layoutRight.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineFrontSpring)
+        self.layoutRight.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.lineFrontSpring
+        )
         self.lineRearSpring = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineRearSpring.setEnabled(True)
         self.lineRearSpring.setReadOnly(True)
         self.lineRearSpring.setObjectName("lineRearSpring")
-        self.layoutRight.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineRearSpring)
+        self.layoutRight.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.lineRearSpring
+        )
         self.lineFrontArb = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineFrontArb.setEnabled(True)
         self.lineFrontArb.setReadOnly(True)
         self.lineFrontArb.setObjectName("lineFrontArb")
-        self.layoutRight.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineFrontArb)
+        self.layoutRight.setWidget(
+            2, QtWidgets.QFormLayout.FieldRole, self.lineFrontArb
+        )
         self.lineRearArb = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineRearArb.setEnabled(True)
         self.lineRearArb.setReadOnly(True)
@@ -203,22 +245,30 @@ class Ui_MainWindow(object):
         self.lineFrontRebound.setEnabled(True)
         self.lineFrontRebound.setReadOnly(True)
         self.lineFrontRebound.setObjectName("lineFrontRebound")
-        self.layoutRight.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineFrontRebound)
+        self.layoutRight.setWidget(
+            4, QtWidgets.QFormLayout.FieldRole, self.lineFrontRebound
+        )
         self.lineRearRebound = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineRearRebound.setEnabled(True)
         self.lineRearRebound.setReadOnly(True)
         self.lineRearRebound.setObjectName("lineRearRebound")
-        self.layoutRight.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineRearRebound)
+        self.layoutRight.setWidget(
+            5, QtWidgets.QFormLayout.FieldRole, self.lineRearRebound
+        )
         self.lineFrontBump = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineFrontBump.setEnabled(True)
         self.lineFrontBump.setReadOnly(True)
         self.lineFrontBump.setObjectName("lineFrontBump")
-        self.layoutRight.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineFrontBump)
+        self.layoutRight.setWidget(
+            6, QtWidgets.QFormLayout.FieldRole, self.lineFrontBump
+        )
         self.lineRearBump = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineRearBump.setEnabled(True)
         self.lineRearBump.setReadOnly(True)
         self.lineRearBump.setObjectName("lineRearBump")
-        self.layoutRight.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineRearBump)
+        self.layoutRight.setWidget(
+            7, QtWidgets.QFormLayout.FieldRole, self.lineRearBump
+        )
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 685, 24))
@@ -266,15 +316,17 @@ class Ui_MainWindow(object):
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
 
+
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    
-    #run tune car function on click
+
+    # run tune car function on click
     ui.btnTuneCar.clicked.connect(guiTuneCar)
 
     sys.exit(app.exec_())
