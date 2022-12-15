@@ -5,11 +5,12 @@ import variables
 #Pass input through functions.TuneCar and output to lines on right
 
 def guiTuneCar():
-    if ui.radbtnLb.isChecked() == True: #check input for lb or kg and set value for weight in kg
-        WeightKg = float(functions.lb_to_kg(ui.lineWeight.text()))
+    # check input for lb or kg and set value for weight in kg
+    if ui.radbtnLb.isChecked():
+        WeightKg = functions.lb_to_kg(ui.lineWeight.text())
     else:
-        WeightKg = ui.lineWeight.text()
-    #set variables from form to input to TuneCar function
+        WeightKg = float(ui.lineWeight.text())
+    # set variables from form to input to TuneCar function
     SpringType = ui.listSpringType.currentText()
     FrontDist = ui.spnDistribution.value()
     CarClass = ui.listCarClass.currentText()
